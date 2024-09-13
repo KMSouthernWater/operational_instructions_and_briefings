@@ -18,34 +18,26 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Outer Box Container with Glow */
-        .outer-box {
+        /* Gradient Overlay to improve readability */
+        .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
-            border: 10px solid #002366; /* Increased border width */
-            border-radius: 15px;
-            box-shadow: 0 0 80px rgba(0, 0, 255, 0.9); /* Larger blue glow effect */
-            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
         }
 
         .container {
+            position: relative;
+            z-index: 2;
             text-align: center;
             max-width: 800px;
             padding: 50px 20px;
             border-radius: 10px;
-            background: rgba(0, 0, 0, 0.5); /* Dark background for content */
-            z-index: 2;
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -61,6 +53,7 @@
             margin-bottom: 30px;
         }
 
+        /* Link and button styles */
         .links {
             display: flex;
             flex-direction: column;
@@ -85,12 +78,14 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
         }
 
+        /* Aligning link symbols */
         a .link-symbol {
             margin-right: 12px;
             vertical-align: middle;
-            font-size: 1.2em;
+            font-size: 1.2em; /* Slightly bigger symbols */
         }
 
+        /* Responsive Design for Smaller Devices */
         @media (max-width: 768px) {
             h1 {
                 font-size: 42px;
@@ -115,18 +110,18 @@
     </style>
 </head>
 <body>
-    <!-- Outer Box with Glow Effect -->
-    <div class="outer-box">
-        <!-- Main content container -->
-        <div class="container">
-            <h1>Operational Instructions & Briefings</h1>
+    <!-- Overlay for darkening background -->
+    <div class="overlay"></div>
 
-            <!-- Links section styled like buttons -->
-            <div class="links">
-                <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank"><span class="link-symbol">📝</span> Click here to submit form entry</a>
-                <a href="Dashboard.html"><span class="link-symbol">📊</span> Click here to view dashboard</a>
-                <a href="staff_responses.html"><span class="link-symbol">📋</span> Click here to view record of staff responses</a>
-            </div>
+    <!-- Main content container -->
+    <div class="container">
+        <h1>Operational Instructions & Briefings</h1>
+
+        <!-- Links section styled like buttons -->
+        <div class="links">
+            <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank"><span class="link-symbol">📝</span> Click here to submit form entry</a>
+            <a href="Dashboard.html"><span class="link-symbol">📊</span> Click here to view dashboard</a>
+            <a href="staff_responses.html"><span class="link-symbol">📋</span> Click here to view record of staff responses</a>
         </div>
     </div>
 </body>
