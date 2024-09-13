@@ -13,7 +13,8 @@
             color: #004d40; /* Deep teal text color for fallback */
             display: flex;
             justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
+            align-items: flex-start; /* Move the container higher */
+            padding-top: 50px; /* Space above the box */
             height: 100vh;
             overflow: hidden; /* Hide overflow to avoid scrollbars */
         }
@@ -25,14 +26,11 @@
             max-width: 1000px; /* Max width of the box */
             border: 2px solid #004d40; /* Border around the box */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow around the box */
-            margin: 0; /* Remove margin to center the box */
-            position: relative; /* Position relative for margin adjustment */
-            top: -20px; /* Move the box up */
         }
         h1 {
             color: #000000; /* Black color for the title */
             margin: 0; /* Remove margin to prevent wrapping */
-            font-size: 48px; /* Font size for the title */
+            font-size: 48px; /* Default font size for large screens */
             font-weight: bold;
             white-space: nowrap; /* Prevent line breaks */
             overflow: hidden; /* Hide overflow text */
@@ -47,7 +45,6 @@
             font-weight: normal; /* Unbold the text */
             transition: color 0.3s ease;
             line-height: 1.5; /* Adjust line height for spacing */
-            padding-left: 0; /* Remove padding to align links with title */
         }
         a:hover {
             color: #000000; /* Black color on hover */
@@ -60,6 +57,37 @@
         .link-symbol {
             margin-right: 10px; /* Space between symbol and text */
             vertical-align: middle; /* Align symbols with text */
+        }
+        /* Media Queries for Responsive Font Sizes */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 40px; /* Adjust for smaller screens */
+            }
+            a {
+                font-size: 16px; /* Adjust link font size */
+            }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px; /* Smaller font size for tablets */
+            }
+            a {
+                font-size: 14px; /* Adjust link font size */
+            }
+            .container {
+                padding: 30px; /* Adjust padding for smaller screens */
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px; /* Font size for mobile screens */
+            }
+            a {
+                font-size: 12px; /* Smaller link font size */
+            }
+            .container {
+                padding: 20px; /* Further reduce padding on mobile */
+            }
         }
     </style>
 </head>
