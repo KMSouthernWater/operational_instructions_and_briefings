@@ -7,43 +7,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #000; /* Dark background to enhance the glow */
-        }
-
-        .outer-box {
-            width: 90%; /* Make the container responsive */
-            max-width: 1200px;
-            height: 90%; /* Take up most of the viewport */
-            border-radius: 20px; /* Rounded corners */
-            overflow: hidden; /* Ensure child content stays within the rounded corners */
-            background: url('background.jpg') no-repeat center center fixed;
-            background-size: cover;
             position: relative;
-            box-shadow: 0 0 60px rgba(0, 162, 255, 0.75); /* Blue glow effect */
+            overflow: hidden;
         }
 
-        .overlay {
+        /* Outer Box Container with Glow */
+        .outer-box {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Darken the background image slightly */
-            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 10px solid #002366; /* Increased border width */
+            border-radius: 15px;
+            box-shadow: 0 0 80px rgba(0, 0, 255, 0.9); /* Larger blue glow effect */
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
         }
 
         .container {
-            position: relative;
-            z-index: 2;
             text-align: center;
-            padding: 50px;
-            color: #fff;
+            max-width: 800px;
+            padding: 50px 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5); /* Dark background for content */
+            z-index: 2;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         h1 {
@@ -77,6 +85,12 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
         }
 
+        a .link-symbol {
+            margin-right: 12px;
+            vertical-align: middle;
+            font-size: 1.2em;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 42px;
@@ -101,12 +115,8 @@
     </style>
 </head>
 <body>
-
-    <!-- Outer container for background and glow effect -->
+    <!-- Outer Box with Glow Effect -->
     <div class="outer-box">
-        <!-- Dark overlay over the background image -->
-        <div class="overlay"></div>
-
         <!-- Main content container -->
         <div class="container">
             <h1>Operational Instructions & Briefings</h1>
@@ -119,6 +129,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
