@@ -56,23 +56,34 @@
     </div>
 
     <script>
-        // Replace with your SharePoint site and folder details
+        // SharePoint site URL and folder path
         const siteUrl = 'https://southernwater.sharepoint.com/sites/DirWater';
-        const folderUrl = '/Documents/Operational Instructions'; // Updated folder path
+        const folderUrl = '/sites/DirWater/Documents/Operational Instructions'; // Corrected folder path
+
+        // Constructed API URL
+        const apiUrl = 'https://southernwater.sharepoint.com/sites/DirWater/_api/web/GetFolderByServerRelativeUrl(\'/sites/DirWater/Documents/Operational Instructions\')/Files';
 
         function fetchFiles() {
-            const apiUrl = `${siteUrl}/_api/web/GetFolderByServerRelativeUrl('${folderUrl}')/Files`;
-
             fetch(apiUrl, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json;odata=verbose'
                 }
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log('Fetched data:', data); // Log the data for debugging
                 const files = data.d.results;
                 const fileList = document.getElementById('file-list');
+
+                if (files.length === 0) {
+                    fileList.innerHTML = '<li>No files found.</li>';
+                }
 
                 files.forEach(file => {
                     const listItem = document.createElement('li');
@@ -83,7 +94,11 @@
                     fileList.appendChild(listItem);
                 });
             })
-            .catch(error => console.error('Error fetching files:', error));
+            .catch(error => {
+                console.error('Error fetching files:', error);
+                const fileList = document.getElementById('file-list');
+                fileList.innerHTML = '<li>Error fetching files. Check console for details.</li>';
+            });
         }
 
         // Fetch files when the page loads
