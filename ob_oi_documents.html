@@ -3,85 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shared Folder</title>
+    <title>SharePoint Files</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
         }
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-        iframe {
-            border: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-        }
-        .zoom-controls {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            z-index: 10;
+        
+        .container {
             display: flex;
+            flex-direction: column;
             align-items: center;
+            padding: 20px;
         }
-        .zoom-controls label {
-            margin-right: 10px;
+        
+        .file-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 800px;
         }
-        .zoom-controls input[type="range"] {
-            width: 200px;
-            margin: 0 10px;
+        
+        .file-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            text-align: center;
         }
-        .zoom-controls span {
+        
+        .file-item a {
+            text-decoration: none;
+            color: #0078d4;
             font-weight: bold;
+        }
+        
+        .file-item a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="zoom-controls">
-        <label for="zoom">Zoom: </label>
-        <input type="range" id="zoom" min="0.1" max="2" step="0.01" value="1">
-        <span id="zoom-value">100%</span>
-    </div>
-    <div class="iframe-container">
-        <iframe
-            id="document-frame"
-            src="https://southernwater.sharepoint.com/:f:/s/DirWater/Eq-UPdXa2h1ErET_ckzYkeQBnKdLFH9J23KLzz4ciDbngA?e=49UeVc"
-            aria-label="View shared folder">
-        </iframe>
+    <div class="container">
+        <h1>SharePoint Files</h1>
+        <ul class="file-list" id="file-list">
+            <!-- File items will be dynamically inserted here -->
+        </ul>
     </div>
 
     <script>
-        const zoomSlider = document.getElementById('zoom');
-        const zoomValue = document.getElementById('zoom-value');
-        const iframe = document.getElementById('document-frame');
+        // Replace with your SharePoint site and folder details
+        const siteUrl = 'https://southernwater.sharepoint.com/sites/DirWater';
+        const folderUrl = '/Documents/Operational Instructions'; // Updated folder path
 
-        function updateSize() {
-            const scale = zoomSlider.value;
-            zoomValue.textContent = `${Math.round(scale * 100)}%`;
+        function fetchFiles() {
+            const apiUrl = `${siteUrl}/_api/web/GetFolderByServerRelativeUrl('${folderUrl}')/Files`;
 
-            iframe.style.transform = `scale(${scale})`;
-            iframe.style.width = `${100 / scale}%`;
-            iframe.style.height = `${100 / scale}%`;
+            fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json;odata=verbose'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const files = data.d.results;
+                const fileList = document.getElementById('file-list');
+
+                files.forEach(file => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'file-item';
+                    listItem.innerHTML = `
+                        <a href="${file.ServerRelativeUrl}" target="_blank">${file.Name}</a>
+                    `;
+                    fileList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error('Error fetching files:', error));
         }
 
-        zoomSlider.addEventListener('input', updateSize);
-
-        window.addEventListener('load', updateSize);
-        window.addEventListener('resize', updateSize);
+        // Fetch files when the page loads
+        document.addEventListener('DOMContentLoaded', fetchFiles);
     </script>
 </body>
 </html>
