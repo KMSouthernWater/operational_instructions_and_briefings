@@ -32,7 +32,7 @@
         }
         a {
             text-decoration: none;
-            color: #b3e0ff; /* Light blue color for links */
+            color: #0099cc; /* Darker light blue color for links */
             font-size: 18px; /* Adjust font size if needed */
             display: block;
             margin: 15px 0;
@@ -40,21 +40,24 @@
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #80cfff; /* Slightly lighter blue on hover */
+            color: #0077b3; /* Slightly darker blue on hover */
         }
         p {
             margin: 0;
-            color: #b3e0ff; /* Light blue color for paragraphs */
+            color: #0099cc; /* Darker light blue color for paragraphs */
             font-weight: normal; /* Unbold the text */
+        }
+        .link-symbol {
+            margin-right: 8px; /* Space between symbol and text */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Operational Instructions & Briefings</h1>
-        <p><a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank">Click here to submit form entry</a></p>
-        <p><a href="dashboard.html">Click here to view dashboard</a></p>
-        <p><a href="staff_responses.html">Click here to view record of staff responses</a></p>
+        <p><a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank"><span class="link-symbol">📝</span>Click here to submit form entry</a></p>
+        <p><a href="dashboard.html"><span class="link-symbol">📊</span>Click here to view dashboard</a></p>
+        <p><a href="staff_responses.html"><span class="link-symbol">📋</span>Click here to view record of staff responses</a></p>
     </div>
 </body>
 </html>
