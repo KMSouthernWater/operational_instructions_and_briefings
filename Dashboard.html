@@ -25,10 +25,9 @@
             font-weight: bold;
         }
         .iframe-container {
-            overflow: hidden; /* Prevent scrolling within the container */
             position: relative;
-            width: 100%; /* Container width */
-            height: 500px; /* Container height, adjust as needed */
+            width: 100%;
+            overflow: hidden;
         }
         iframe {
             border: none;
@@ -48,7 +47,7 @@
         <input type="range" id="zoom" min="0.5" max="3" step="0.1" value="1">
         <span id="zoom-value">100%</span>
     </div>
-    <div class="iframe-container">
+    <div class="iframe-container" id="iframe-container">
         <iframe
             id="document-frame"
             src="https://southernwater.sharepoint.com/sites/DirWater/_layouts/15/Doc.aspx?sourcedoc={d796ff40-922a-4b18-aaec-84047bb60fe9}&action=embedview&wdbipreview=True&wdAllowInteractivity=True&wdHideSheetTabs=True&Item=dashboard&wdHideHeaders=True&ActiveCell=A35&AllowTyping=True">
@@ -59,16 +58,17 @@
         const zoomSlider = document.getElementById('zoom');
         const zoomValue = document.getElementById('zoom-value');
         const iframe = document.getElementById('document-frame');
-        const container = document.querySelector('.iframe-container');
+        const container = document.getElementById('iframe-container');
 
         zoomSlider.addEventListener('input', function() {
             const scale = zoomSlider.value;
             zoomValue.textContent = `${Math.round(scale * 100)}%`;
+
+            // Adjust iframe scale
             iframe.style.transform = `scale(${scale})`;
             
-            // Adjust the container size to ensure it fits the scaled content
-            container.style.width = `${100 / scale}%`;
-            container.style.height = `${500 / scale}px`;  // Adjust height based on scale
+            // Adjust container size to fit the scaled content
+            container.style.height = `${500 / scale}px`;  // Adjust height dynamically
         });
     </script>
 </body>
