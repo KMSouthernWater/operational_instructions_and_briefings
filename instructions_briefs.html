@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Instructions</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent body scroll */
+            font-family: Arial, sans-serif;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Hide overflow */
+        }
+        iframe {
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent; /* Ensure iframe background is transparent */
+        }
+        .zoom-controls {
+            position: absolute;
+            top: 20px; /* Position zoom controls at the top */
+            left: 20px; /* Position zoom controls on the left */
+            background: #fff; /* Background for controls for better visibility */
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 10; /* Ensure controls are above other elements */
+            display: flex;
+            align-items: center;
+        }
+        .zoom-controls label {
+            margin-right: 10px;
+        }
+        .zoom-controls input[type="range"] {
+            width: 200px;
+            margin: 0 10px;
+        }
+        .zoom-controls span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="zoom-controls">
+        <label for="zoom">Zoom: </label>
+        <input type="range" id="zoom" min="0.1" max="2" step="0.01" value="1">
+        <span id="zoom-value">100%</span>
+    </div>
+    <div class="iframe-container" id="iframe-container">
+        <iframe
+            id="document-frame"
+            src="https://southernwater.sharepoint.com/sites/DirWater/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FDirWater%2FShared%20Documents%2FOperational%20Instructions%2FOperational%20instruction%20powerpoints&viewid=15a804ac%2D65b2%2D4f12%2D9bc7%2D7b47ef8352bd"
+            aria-label="View all operational instructions & briefings">
+        </iframe>
+    </div>
+
+    <script>
+        const zoomSlider = document.getElementById('zoom');
+        const zoomValue = document.getElementById('zoom-value');
+        const iframe = document.getElementById('document-frame');
+
+        function updateSize() {
+            const scale = zoomSlider.value;
+            zoomValue.textContent = `${Math.round(scale * 100)}%`; // Convert scale to percentage
+
+            // Apply the scale to the iframe
+            iframe.style.transform = `scale(${scale})`;
+
+            // Adjust iframe container size to fit the scaled iframe
+            iframe.style.width = `${100 / scale}%`;
+            iframe.style.height = `${100 / scale}%`;
+        }
+
+        zoomSlider.addEventListener('input', updateSize);
+
+        // Initialize sizes properly on load
+        window.addEventListener('load', updateSize);
+        window.addEventListener('resize', updateSize); // Adjust on window resize
+    </script>
+</body>
+</html>
