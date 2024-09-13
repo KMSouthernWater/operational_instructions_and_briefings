@@ -29,6 +29,7 @@
             height: 100%;
             background: transparent; /* Ensure iframe background is transparent */
             transform-origin: 0 0;
+            overflow: hidden; /* Hide overflow from iframe content */
         }
         .zoom-controls {
             margin: 20px;
@@ -36,7 +37,7 @@
             align-items: center;
             position: absolute;
             top: 20px;
-            right: 20px;
+            left: 20px; /* Move zoom controls to the top left */
             background: #fff; /* Background for controls for better visibility */
             padding: 10px;
             border-radius: 5px;
