@@ -3,41 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Shared Folder</title>
+    <title>Shared Folder</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
-        .container {
-            text-align: center;
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
         }
-        .btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #0078d4;
+        iframe {
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
         }
-        .btn:hover {
-            background-color: #005a9e;
+        .zoom-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+        }
+        .zoom-controls label {
+            margin-right: 10px;
+        }
+        .zoom-controls input[type="range"] {
+            width: 200px;
+            margin: 0 10px;
+        }
+        .zoom-controls span {
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="https://southernwater.sharepoint.com/:f:/s/DirWater/Eq-UPdXa2h1ErET_ckzYkeQBnKdLFH9J23KLzz4ciDbngA?e=49UeVc"
-           target="_blank"
-           class="btn">
-           View Shared Folder
-        </a>
+    <div class="zoom-controls">
+        <label for="zoom">Zoom: </label>
+        <input type="range" id="zoom" min="0.1" max="2" step="0.01" value="1">
+        <span id="zoom-value">100%</span>
     </div>
+    <div class="iframe-container">
+        <iframe
+            id="document-frame"
+            src="https://southernwater.sharepoint.com/:f:/s/DirWater/Eq-UPdXa2h1ErET_ckzYkeQBnKdLFH9J23KLzz4ciDbngA?e=49UeVc"
+            aria-label="View shared folder">
+        </iframe>
+    </div>
+
+    <script>
+        const zoomSlider = document.getElementById('zoom');
+        const zoomValue = document.getElementById('zoom-value');
+        const iframe = document.getElementById('document-frame');
+
+        function updateSize() {
+            const scale = zoomSlider.value;
+            zoomValue.textContent = `${Math.round(scale * 100)}%`;
+
+            iframe.style.transform = `scale(${scale})`;
+            iframe.style.width = `${100 / scale}%`;
+            iframe.style.height = `${100 / scale}%`;
+        }
+
+        zoomSlider.addEventListener('input', updateSize);
+
+        window.addEventListener('load', updateSize);
+        window.addEventListener('resize', updateSize);
+    </script>
 </body>
 </html>
