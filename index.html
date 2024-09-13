@@ -46,13 +46,7 @@
             margin-bottom: 10px;
         }
 
-        p {
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 40px;
-        }
-
-        /* Link and button styles like Netflix */
+        /* Link and button styles */
         .links {
             display: flex;
             flex-direction: column;
@@ -64,7 +58,7 @@
             text-decoration: none;
             color: #fff;
             font-size: 20px;
-            background-color: #e50914;
+            background-color: #002366; /* Dark blue */
             padding: 15px 25px;
             border-radius: 5px;
             font-weight: bold;
@@ -72,34 +66,7 @@
         }
 
         a:hover {
-            background-color: #f40612;
-        }
-
-        /* Cards/Features Section */
-        .features {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap; /* Ensure wrapping for small screens */
-        }
-
-        .card {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            width: 22%;
-            text-align: left;
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .card h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 16px;
+            background-color: #001a4d; /* Slightly darker blue on hover */
         }
 
         /* Responsive Design for Smaller Devices */
@@ -108,32 +75,15 @@
                 font-size: 36px;
             }
 
-            p {
-                font-size: 18px;
-            }
-
             a {
                 font-size: 18px;
                 padding: 12px 20px;
-            }
-
-            .features {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .card {
-                width: 80%; /* Make the cards full width on small screens */
             }
         }
 
         @media (max-width: 480px) {
             h1 {
                 font-size: 28px;
-            }
-
-            p {
-                font-size: 16px;
             }
         }
     </style>
@@ -145,33 +95,12 @@
     <!-- Main content container -->
     <div class="container">
         <h1>Operational Instructions & Briefings</h1>
-        <p>Keep up-to-date with important information for staff members.</p>
 
         <!-- Links section styled like buttons -->
         <div class="links">
             <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank"><span class="link-symbol">📝</span> Click here to submit form entry</a>
             <a href="Dashboard.html"><span class="link-symbol">📊</span> Click here to view dashboard</a>
             <a href="staff_responses.html"><span class="link-symbol">📋</span> Click here to view record of staff responses</a>
-        </div>
-
-        <!-- Cards/Feature Section -->
-        <div class="features">
-            <div class="card">
-                <h3>Feature 1</h3>
-                <p>Details about this feature go here.</p>
-            </div>
-            <div class="card">
-                <h3>Feature 2</h3>
-                <p>Details about this feature go here.</p>
-            </div>
-            <div class="card">
-                <h3>Feature 3</h3>
-                <p>Details about this feature go here.</p>
-            </div>
-            <div class="card">
-                <h3>Feature 4</h3>
-                <p>Details about this feature go here.</p>
-            </div>
         </div>
     </div>
 </body>
