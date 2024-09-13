@@ -17,18 +17,21 @@
             color: #004d40; /* Deep teal text color for fallback */
         }
         .container {
-            text-align: center;
+            text-align: left; /* Align text to the left */
             background-color: transparent; /* Fully transparent background to remove box */
             padding: 20px; /* Adjust padding to move content up */
-            width: 80%;
-            max-width: 600px;
+            width: 90%; /* Increase width for more space */
+            max-width: 800px; /* Increase max-width for a larger container */
             margin-top: -10%; /* Move the content up */
         }
         h1 {
             color: #0000ff; /* Blue color for the title */
-            margin-bottom: 20px;
-            font-size: 48px; /* Larger font size for the title */
+            margin: 0; /* Remove margin to prevent wrapping */
+            font-size: 32px; /* Adjust font size to fit one line */
             font-weight: bold;
+            white-space: nowrap; /* Prevent line breaks */
+            overflow: hidden; /* Hide overflow text */
+            text-overflow: ellipsis; /* Add ellipsis if text overflows */
         }
         a {
             text-decoration: none;
@@ -38,6 +41,7 @@
             margin: 15px 0;
             font-weight: normal; /* Unbold the text */
             transition: color 0.3s ease;
+            line-height: 1.5; /* Adjust line height for spacing */
         }
         a:hover {
             color: #0077b3; /* Slightly darker blue on hover */
@@ -48,7 +52,8 @@
             font-weight: normal; /* Unbold the text */
         }
         .link-symbol {
-            margin-right: 8px; /* Space between symbol and text */
+            margin-right: 10px; /* Space between symbol and text */
+            vertical-align: middle; /* Align symbols with text */
         }
     </style>
 </head>
