@@ -27,9 +27,9 @@
         }
         .iframe-container {
             position: relative;
-            width: 100%;
+            width: 100vw; /* Full viewport width */
             height: 100vh; /* Full viewport height */
-            overflow: hidden; /* Hide overflow */
+            overflow: auto; /* Enable scrolling */
             background: #f0f0f0; /* Light background for better visualization */
             border: 1px solid #ddd; /* Optional border */
             box-sizing: border-box; /* Ensure padding/border doesn't affect dimensions */
@@ -39,8 +39,6 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
             transform-origin: 0 0;
             background: transparent; /* Ensure iframe background is transparent */
         }
@@ -72,9 +70,9 @@
             // Apply the scale to the iframe
             iframe.style.transform = `scale(${scale})`;
 
-            // Adjust container size to fit the scaled iframe
-            iframe.style.width = `${100 / scale}%`;
-            iframe.style.height = `${100 / scale}%`;
+            // Adjust the iframe size to fit the container while allowing scroll
+            iframe.style.width = `${100 * scale}%`;
+            iframe.style.height = `${100 * scale}%`;
         }
 
         zoomSlider.addEventListener('input', updateSize);
