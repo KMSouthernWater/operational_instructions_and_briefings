@@ -81,8 +81,15 @@
         }
 
         a .link-symbol {
-            margin: 0 12px; /* Add space around symbols */
             font-size: 1.2em;
+        }
+
+        a .symbol-left {
+            margin-right: auto;
+        }
+
+        a .symbol-right {
+            margin-left: auto;
         }
 
         @media (max-width: 768px) {
@@ -111,18 +118,26 @@
     <div class="container">
         <h1>Operational Instructions & Briefings</h1>
         <div class="links">
-            <!-- New Link Added with Symbols on Both Sides -->
+            <!-- New Link Added with Symbols on Both Ends -->
             <a href="all_instructions.html" aria-label="View all operational instructions & briefings">
-                <span class="link-symbol">📚</span> Click here to view all operational instructions & briefings <span class="link-symbol">📚</span>
+                <span class="link-symbol symbol-left">📚</span> 
+                Click here to view all operational instructions & briefings 
+                <span class="link-symbol symbol-right">📚</span>
             </a>
             <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank" aria-label="Submit form entry">
-                <span class="link-symbol">📝</span> Click here to submit form entry <span class="link-symbol">📝</span>
+                <span class="link-symbol symbol-left">📝</span> 
+                Click here to submit form entry 
+                <span class="link-symbol symbol-right">📝</span>
             </a>
             <a href="Dashboard.html" aria-label="View dashboard">
-                <span class="link-symbol">📊</span> Click here to view dashboard <span class="link-symbol">📊</span>
+                <span class="link-symbol symbol-left">📊</span> 
+                Click here to view dashboard 
+                <span class="link-symbol symbol-right">📊</span>
             </a>
             <a href="staff_responses.html" aria-label="View record of staff responses">
-                <span class="link-symbol">📋</span> Click here to view record of staff responses <span class="link-symbol">📋</span>
+                <span class="link-symbol symbol-left">📋</span> 
+                Click here to view record of staff responses 
+                <span class="link-symbol symbol-right">📋</span>
             </a>
         </div>
     </div>
