@@ -14,34 +14,32 @@
             margin: 0;
             background: url('background.jpg') no-repeat center center fixed;
             background-size: cover; /* Cover the entire viewport */
-            color: #004d40; /* Deep teal text color */
+            color: #004d40; /* Deep teal text color for fallback */
         }
         .container {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0); /* Transparent background to remove box */
             padding: 30px;
             width: 80%;
             max-width: 600px;
         }
         h1 {
-            color: #00796b; /* Teal for headings */
+            color: #0000ff; /* Blue color for the title */
             margin-bottom: 20px;
-            font-size: 36px; /* Larger font size for the title */
+            font-size: 48px; /* Larger font size for the title */
             font-weight: bold;
         }
         a {
             text-decoration: none;
-            color: #00897b; /* Teal color for links */
-            font-size: 18px;
+            color: #b3e0ff; /* Light blue color for links */
+            font-size: 20px;
             display: block;
             margin: 15px 0;
             font-weight: bold;
             transition: color 0.3s ease;
         }
         a:hover {
-            color: #004d40; /* Darker teal on hover */
+            color: #80cfff; /* Slightly lighter blue on hover */
         }
         p {
             margin: 0;
