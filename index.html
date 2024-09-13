@@ -20,6 +20,7 @@
             position: relative;
         }
 
+        /* Gradient Overlay to improve readability */
         .overlay {
             position: absolute;
             top: 0;
@@ -37,7 +38,6 @@
             max-width: 800px;
             padding: 50px 20px;
             border-radius: 10px;
-            background: rgba(0, 0, 0, 0.5);
             animation: fadeIn 1s ease-in-out;
         }
 
@@ -53,6 +53,7 @@
             margin-bottom: 30px;
         }
 
+        /* Link and button styles */
         .links {
             display: flex;
             flex-direction: column;
@@ -68,26 +69,28 @@
             padding: 18px 35px;
             border-radius: 8px;
             font-weight: 600;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         a:hover {
             background-color: #001a4d;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-            transform: scale(1.05); /* Slightly enlarge button on hover */
         }
 
+        /* Aligning link symbols */
         a .link-symbol {
             margin-right: 12px;
             vertical-align: middle;
-            font-size: 1.2em;
+            font-size: 1.2em; /* Slightly bigger symbols */
         }
 
+        /* Responsive Design for Smaller Devices */
         @media (max-width: 768px) {
             h1 {
                 font-size: 42px;
             }
+
             a {
                 font-size: 18px;
                 padding: 15px 25px;
@@ -98,6 +101,7 @@
             h1 {
                 font-size: 32px;
             }
+
             a {
                 font-size: 16px;
                 padding: 12px 20px;
@@ -106,13 +110,18 @@
     </style>
 </head>
 <body>
+    <!-- Overlay for darkening background -->
     <div class="overlay"></div>
+
+    <!-- Main content container -->
     <div class="container">
         <h1>Operational Instructions & Briefings</h1>
+
+        <!-- Links section styled like buttons -->
         <div class="links">
-            <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank" aria-label="Submit form entry"><span class="link-symbol">📝</span> Click here to submit form entry</a>
-            <a href="Dashboard.html" aria-label="View dashboard"><span class="link-symbol">📊</span> Click here to view dashboard</a>
-            <a href="staff_responses.html" aria-label="View record of staff responses"><span class="link-symbol">📋</span> Click here to view record of staff responses</a>
+            <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank"><span class="link-symbol">📝</span> Click here to submit form entry</a>
+            <a href="Dashboard.html"><span class="link-symbol">📊</span> Click here to view dashboard</a>
+            <a href="staff_responses.html"><span class="link-symbol">📋</span> Click here to view record of staff responses</a>
         </div>
     </div>
 </body>
