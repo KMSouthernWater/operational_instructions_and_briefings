@@ -67,14 +67,14 @@
 
         function updateSize() {
             const scale = zoomSlider.value;
-            zoomValue.textContent = ${Math.round(scale * 100)}%; // Convert scale to percentage
+            zoomValue.textContent = `${Math.round(scale * 100)}%`; // Convert scale to percentage
 
             // Apply the scale to the iframe
-            iframe.style.transform = scale(${scale});
+            iframe.style.transform = `scale(${scale})`;
 
             // Adjust container size to fit the scaled iframe
-            iframe.style.width = ${100 / scale}%;
-            iframe.style.height = ${100 / scale}%;
+            iframe.style.width = `${100 / scale}%`;
+            iframe.style.height = `${100 / scale}%`;
         }
 
         zoomSlider.addEventListener('input', updateSize);
