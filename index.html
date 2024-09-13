@@ -20,30 +20,24 @@
             position: relative;
         }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
-            z-index: 1;
-        }
-
-        .container {
+        .glow-box {
             position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 800px;
-            padding: 50px 20px;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.5); /* Keep the dark background for readability */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 255, 0.8); /* Blue glow effect */
             animation: fadeIn 1s ease-in-out;
+            background: rgba(0, 0, 0, 0.6); /* Slightly transparent background for the outer box */
         }
 
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 50px 20px;
         }
 
         h1 {
@@ -106,13 +100,14 @@
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container">
-        <h1>Operational Instructions & Briefings</h1>
-        <div class="links">
-            <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank" aria-label="Submit form entry"><span class="link-symbol">📝</span> Click here to submit form entry</a>
-            <a href="Dashboard.html" aria-label="View dashboard"><span class="link-symbol">📊</span> Click here to view dashboard</a>
-            <a href="staff_responses.html" aria-label="View record of staff responses"><span class="link-symbol">📋</span> Click here to view record of staff responses</a>
+    <div class="glow-box">
+        <div class="container">
+            <h1>Operational Instructions & Briefings</h1>
+            <div class="links">
+                <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank" aria-label="Submit form entry"><span class="link-symbol">📝</span> Click here to submit form entry</a>
+                <a href="Dashboard.html" aria-label="View dashboard"><span class="link-symbol">📊</span> Click here to view dashboard</a>
+                <a href="staff_responses.html" aria-label="View record of staff responses"><span class="link-symbol">📋</span> Click here to view record of staff responses</a>
+            </div>
         </div>
     </div>
 </body>
