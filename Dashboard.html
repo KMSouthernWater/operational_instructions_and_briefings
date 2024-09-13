@@ -30,7 +30,7 @@
             width: 100%;
             height: 100vh; /* Full viewport height */
             overflow: hidden; /* Hide overflow */
-            background: black; /* Black background for better visualization */
+            background: #f0f0f0; /* Light background for better visualization */
             border: 1px solid #ddd; /* Optional border */
             box-sizing: border-box; /* Ensure padding/border doesn't affect dimensions */
         }
@@ -50,7 +50,7 @@
     <div class="zoom-controls">
         <label for="zoom">Zoom: </label>
         <input type="range" id="zoom" min="0.1" max="2" step="0.01" value="0.85">
-        <span id="zoom-value">85%</span> <!-- Initial zoom value in percentage -->
+        <span id="zoom-value">100%</span>
     </div>
     <div class="iframe-container" id="iframe-container">
         <iframe
@@ -67,14 +67,14 @@
 
         function updateSize() {
             const scale = zoomSlider.value;
-            zoomValue.textContent = `${Math.round(scale * 100)}%`; // Convert scale to percentage
+            zoomValue.textContent = ${Math.round(scale * 100)}%; // Convert scale to percentage
 
             // Apply the scale to the iframe
-            iframe.style.transform = `scale(${scale})`;
+            iframe.style.transform = scale(${scale});
 
             // Adjust container size to fit the scaled iframe
-            iframe.style.width = `${100 / scale}%`;
-            iframe.style.height = `${100 / scale}%`;
+            iframe.style.width = ${100 / scale}%;
+            iframe.style.height = ${100 / scale}%;
         }
 
         zoomSlider.addEventListener('input', updateSize);
