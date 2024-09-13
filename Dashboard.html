@@ -75,15 +75,10 @@
             iframe.style.height = `${100 * scale}%`;
         }
 
-        // Initialize sizes properly on load
-        window.addEventListener('load', () => {
-            updateSize();
-            // Ensure the zoom slider shows 85% on load
-            zoomSlider.value = 0.85;
-            zoomValue.textContent = '85%';
-        });
-
         zoomSlider.addEventListener('input', updateSize);
+
+        // Initialize sizes properly on load
+        window.addEventListener('load', updateSize);
         window.addEventListener('resize', updateSize); // Adjust on window resize
     </script>
 </body>
