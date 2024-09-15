@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
+            margin: 0; /* Remove default margin */
             overflow: hidden; /* Prevent body scroll */
         }
         .zoom-controls {
@@ -42,14 +42,14 @@
             width: 100%;
             height: 100%;
             transform-origin: 0 0;
-            background: transparent;
+            background: transparent; /* Ensure iframe background is transparent */
         }
     </style>
 </head>
 <body>
     <div class="zoom-controls">
         <label for="zoom">Zoom: </label>
-        <input type="range" id="zoom" min="0.1" max="2" step="0.01" value="1">
+        <input type="range" id="zoom" min="0.1" max="2" step="0.01" value="0.85">
         <span id="zoom-value">100%</span>
     </div>
     <div class="iframe-container" id="iframe-container">
@@ -65,51 +65,23 @@
         const iframe = document.getElementById('document-frame');
         const container = document.getElementById('iframe-container');
 
-        function fitContentToScreen() {
-            // Get container dimensions (viewport size)
-            const containerWidth = container.offsetWidth;
-            const containerHeight = container.offsetHeight;
-
-            // Assume a base content size (replace these values with the actual content size if known)
-            const contentWidth = 1366; // Example content width
-            const contentHeight = 768;  // Example content height
-
-            // Calculate the scale based on the aspect ratio of the content and container
-            const widthScale = containerWidth / contentWidth;
-            const heightScale = containerHeight / contentHeight;
-
-            // Choose the smaller scale to fit the content within the screen (fit width and height)
-            const scale = Math.min(widthScale, heightScale);
-
-            // Apply the scale to the iframe
-            iframe.style.transform = `scale(${scale})`;
-
-            // Ensure no scrolling by adjusting iframe size
-            iframe.style.width = `${contentWidth}px`;  // Set width to the content's original size
-            iframe.style.height = `${contentHeight}px`; // Set height to the content's original size
-
-            // Update the zoom slider and display the percentage
-            zoomSlider.value = scale;
-            zoomValue.textContent = `${Math.round(scale * 100)}%`;
-        }
-
-        // Update zoom based on slider input
         function updateSize() {
             const scale = zoomSlider.value;
-            zoomValue.textContent = `${Math.round(scale * 100)}%`;
+            zoomValue.textContent = `${Math.round(scale * 100)}%`; // Convert scale to percentage
 
             // Apply the scale to the iframe
             iframe.style.transform = `scale(${scale})`;
 
-            // Adjust iframe size to avoid scrolling
+            // Adjust container size to fit the scaled iframe
             iframe.style.width = `${100 / scale}%`;
             iframe.style.height = `${100 / scale}%`;
         }
 
-        // Event listeners
         zoomSlider.addEventListener('input', updateSize);
-        window.addEventListener('load', fitContentToScreen);  // Fit content when the page loads
-        window.addEventListener('resize', fitContentToScreen); // Adjust on window resize
+
+        // Initialize sizes properly on load
+        window.addEventListener('load', updateSize);
+        window.addEventListener('resize', updateSize); // Adjust on window resize
     </script>
 </body>
 </html>
