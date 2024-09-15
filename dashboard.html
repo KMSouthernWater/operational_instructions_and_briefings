@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0; /* Remove default margin */
-            overflow: hidden; /* Prevent body scroll */
+            margin: 0;
+            overflow: hidden;
         }
         .zoom-controls {
             margin: 20px;
@@ -28,11 +28,11 @@
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 100vh; /* Full viewport height */
-            overflow: hidden; /* Hide overflow */
-            background: #f0f0f0; /* Light background for better visualization */
-            border: 1px solid #ddd; /* Optional border */
-            box-sizing: border-box; /* Ensure padding/border doesn't affect dimensions */
+            height: 100vh;
+            overflow: hidden;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
         }
         iframe {
             border: none;
@@ -42,7 +42,7 @@
             width: 100%;
             height: 100%;
             transform-origin: 0 0;
-            background: transparent; /* Ensure iframe background is transparent */
+            background: transparent;
         }
     </style>
 </head>
@@ -65,9 +65,38 @@
         const iframe = document.getElementById('document-frame');
         const container = document.getElementById('iframe-container');
 
+        function fitContentToScreen() {
+            // Get container dimensions (viewport size)
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+
+            // Assume a base content size (replace these values with the actual content size if known)
+            const contentWidth = 1366; // Example content width
+            const contentHeight = 768;  // Example content height
+
+            // Calculate the scale based on the aspect ratio of the content and container
+            const widthScale = containerWidth / contentWidth;
+            const heightScale = containerHeight / contentHeight;
+
+            // Choose the smaller scale to fit the content within the screen
+            const scale = Math.min(widthScale, heightScale);
+
+            // Apply the scale
+            iframe.style.transform = `scale(${scale})`;
+
+            // Adjust container size to fit the scaled iframe
+            iframe.style.width = `${100 / scale}%`;
+            iframe.style.height = `${100 / scale}%`;
+
+            // Update the zoom slider and display the percentage
+            zoomSlider.value = scale;
+            zoomValue.textContent = `${Math.round(scale * 100)}%`;
+        }
+
+        // Update zoom based on slider input
         function updateSize() {
             const scale = zoomSlider.value;
-            zoomValue.textContent = `${Math.round(scale * 100)}%`; // Convert scale to percentage
+            zoomValue.textContent = `${Math.round(scale * 100)}%`;
 
             // Apply the scale to the iframe
             iframe.style.transform = `scale(${scale})`;
@@ -77,11 +106,10 @@
             iframe.style.height = `${100 / scale}%`;
         }
 
+        // Event listeners
         zoomSlider.addEventListener('input', updateSize);
-
-        // Initialize sizes properly on load
-        window.addEventListener('load', updateSize);
-        window.addEventListener('resize', updateSize); // Adjust on window resize
+        window.addEventListener('load', fitContentToScreen);  // Fit content when the page loads
+        window.addEventListener('resize', fitContentToScreen); // Adjust on window resize
     </script>
 </body>
 </html>
