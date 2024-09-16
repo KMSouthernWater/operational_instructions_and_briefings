@@ -117,6 +117,12 @@
             border-radius: 8px;
         }
 
+        .modal-content h3 {
+            font-size: 20px;
+            color: #fff; /* White text for the title */
+            margin-bottom: 10px; /* Adjust spacing between title and QR code */
+        }
+
         .modal-content img {
             width: 200px;
             height: 200px;
@@ -126,7 +132,18 @@
             display: block;
             margin-top: 20px;
             font-size: 18px;
-            color: #002366;
+            color: #fff; /* White text */
+            text-decoration: none; /* No underline */
+            background-color: #002366; /* Optional background color */
+            padding: 10px 20px; /* Add padding */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Add hover effect for the clickable link */
+        .modal-content a:hover {
+            background-color: #001a4d;
+            transform: scale(1.05);
         }
 
         .close {
@@ -170,16 +187,16 @@
     <div class="container">
         <h1>Operational Instructions & Briefings</h1>
         <div class="links">
-            <!-- New Link with Modal Trigger -->
-            <a href="#" aria-label="Submit form entry" id="submitLink">
-                <span class="link-symbol symbol-left">📝</span> 
-                Click here to submit form entry 
-                <span class="link-symbol symbol-right">📝</span>
-            </a>
             <a href="https://southernwater.sharepoint.com/:f:/s/DirWater/Eq-UPdXa2h1ErET_ckzYkeQBnKdLFH9J23KLzz4ciDbngA?e=ZqFAR0" aria-label="View all operational instructions & briefings">
                 <span class="link-symbol symbol-left">📚</span> 
                 Click here to view all operational instructions & briefings 
                 <span class="link-symbol symbol-right">📚</span>
+            </a>
+            <!-- Link that triggers the modal -->
+            <a href="#" aria-label="Submit form entry" id="submitLink">
+                <span class="link-symbol symbol-left">📝</span> 
+                Click here to submit form entry 
+                <span class="link-symbol symbol-right">📝</span>
             </a>
             <a href="dashboard/" aria-label="View dashboard">
                 <span class="link-symbol symbol-left">📊</span> 
@@ -194,11 +211,12 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal for QR code and link -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Submit Form Entry</h2>
+            <h3>Scan QR Code Below:</h3>
             <img src="qr-code.png" alt="QR Code">
             <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank">Or click here to open the form</a>
         </div>
@@ -210,7 +228,7 @@
         var btn = document.getElementById("submitLink");
         var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks the button, open the modal 
+        // When the user clicks the button, open the modal
         btn.onclick = function(event) {
             event.preventDefault();
             modal.style.display = "block";
