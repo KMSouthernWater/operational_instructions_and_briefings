@@ -58,30 +58,5 @@
             src="https://southernwater.sharepoint.com/sites/DirWater/_layouts/15/Doc.aspx?sourcedoc={d796ff40-922a-4b18-aaec-84047bb60fe9}&action=embedview&wdbipreview=True&wdAllowInteractivity=True&wdHideSheetTabs=True&Item=dashboard&wdHideHeaders=True&AllowTyping=True">
         </iframe>
     </div>
-
-    <script>
-        const zoomSlider = document.getElementById('zoom');
-        const zoomValue = document.getElementById('zoom-value');
-        const iframe = document.getElementById('document-frame');
-        const container = document.getElementById('iframe-container');
-
-        function updateSize() {
-            const scale = zoomSlider.value;
-            zoomValue.textContent = `${Math.round(scale * 100)}%`; // Convert scale to percentage
-
-            // Apply the scale to the iframe
-            iframe.style.transform = `scale(${scale})`;
-
-            // Adjust container size to fit the scaled iframe
-            iframe.style.width = `${100 / scale}%`;
-            iframe.style.height = `${100 / scale}%`;
-        }
-
-        zoomSlider.addEventListener('input', updateSize);
-
-        // Initialize sizes properly on load
-        window.addEventListener('load', updateSize);
-        window.addEventListener('resize', updateSize); // Adjust on window resize
-    </script>
 </body>
 </html>
