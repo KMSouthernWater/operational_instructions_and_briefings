@@ -109,33 +109,33 @@
         .modal-content {
             background-color: #fff;
             margin: auto;
-            padding: 20px;
+            padding: 40px; /* Increased padding for larger content */
             border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
+            width: 60%; /* Larger box */
+            max-width: 600px;
             text-align: center;
             border-radius: 8px;
         }
 
         .modal-content h3 {
-            font-size: 20px;
-            color: #fff; /* White text for the title */
-            margin-bottom: 10px; /* Adjust spacing between title and QR code */
+            font-size: 28px; /* Larger text */
+            color: #000; /* Black text */
+            margin-bottom: 20px;
         }
 
         .modal-content img {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px; /* Increased size of QR code */
         }
 
         .modal-content a {
             display: block;
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 20px; /* Slightly larger font size for the link */
             color: #fff; /* White text */
-            text-decoration: none; /* No underline */
-            background-color: #002366; /* Optional background color */
-            padding: 10px 20px; /* Add padding */
+            text-decoration: none;
+            background-color: #002366;
+            padding: 15px 25px; /* Increased padding */
             border-radius: 5px; /* Rounded corners */
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
@@ -192,7 +192,7 @@
                 Click here to view all operational instructions & briefings 
                 <span class="link-symbol symbol-right">📚</span>
             </a>
-            <!-- Link that triggers the modal -->
+                        <!-- Link that triggers the modal -->
             <a href="#" aria-label="Submit form entry" id="submitLink">
                 <span class="link-symbol symbol-left">📝</span> 
                 Click here to submit form entry 
@@ -215,7 +215,6 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Submit Form Entry</h2>
             <h3>Scan QR Code Below:</h3>
             <img src="qr-code.png" alt="QR Code">
             <a href="https://forms.office.com/e/RiiJCFcWNA" target="_blank">Or click here to open the form</a>
