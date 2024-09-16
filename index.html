@@ -72,35 +72,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
 
         a:hover {
             background-color: #001a4d;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
             transform: scale(1.05);
-        }
-
-        /* Tooltip Styles */
-        a .tooltip {
-            visibility: hidden;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        a:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
         }
 
         a .link-symbol {
@@ -132,37 +109,38 @@
         .modal-content {
             background-color: #fff;
             margin: auto;
-            padding: 40px; 
+            padding: 40px; /* Increased padding for larger content */
             border: 1px solid #888;
-            width: 60%; 
+            width: 60%; /* Larger box */
             max-width: 600px;
             text-align: center;
             border-radius: 8px;
         }
 
         .modal-content h3 {
-            font-size: 28px; 
-            color: #000; 
+            font-size: 28px; /* Larger text */
+            color: #000; /* Black text */
             margin-bottom: 20px;
         }
 
         .modal-content img {
             width: 250px;
-            height: 250px;
+            height: 250px; /* Increased size of QR code */
         }
 
         .modal-content a {
             display: block;
             margin-top: 20px;
-            font-size: 20px;
-            color: #fff;
+            font-size: 20px; /* Slightly larger font size for the link */
+            color: #fff; /* White text */
             text-decoration: none;
             background-color: #002366;
-            padding: 15px 25px;
-            border-radius: 5px;
+            padding: 15px 25px; /* Increased padding */
+            border-radius: 5px; /* Rounded corners */
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
+        /* Add hover effect for the clickable link */
         .modal-content a:hover {
             background-color: #001a4d;
             transform: scale(1.05);
@@ -209,30 +187,26 @@
     <div class="container">
         <h1>Operational Instructions & Briefings</h1>
         <div class="links">
-            <!-- Link with Tooltip -->
-            <a href="#" aria-label="Submit form entry" id="submitLink">
-                <span class="link-symbol symbol-left">📝</span> 
-                Click here to submit form entry 
-                <span class="link-symbol symbol-right">📝</span>
-                <div class="tooltip">Submit your form here!</div>
-            </a>
             <a href="https://southernwater.sharepoint.com/:f:/s/DirWater/Eq-UPdXa2h1ErET_ckzYkeQBnKdLFH9J23KLzz4ciDbngA?e=ZqFAR0" aria-label="View all operational instructions & briefings">
                 <span class="link-symbol symbol-left">📚</span> 
                 Click here to view all operational instructions & briefings 
                 <span class="link-symbol symbol-right">📚</span>
-                <div class="tooltip">View all operational instructions</div>
+            </a>
+                        <!-- Link that triggers the modal -->
+            <a href="#" aria-label="Submit form entry" id="submitLink">
+                <span class="link-symbol symbol-left">📝</span> 
+                Click here to submit form entry 
+                <span class="link-symbol symbol-right">📝</span>
             </a>
             <a href="dashboard/" aria-label="View dashboard">
                 <span class="link-symbol symbol-left">📊</span> 
                 Click here to view dashboard 
                 <span class="link-symbol symbol-right">📊</span>
-                <div class="tooltip">Access the dashboard</div>
             </a>
             <a href="responses/" aria-label="View record of staff responses">
                 <span class="link-symbol symbol-left">📋</span> 
                 Click here to view record of staff responses 
                 <span class="link-symbol symbol-right">📋</span>
-                <div class="tooltip">See staff responses</div>
             </a>
         </div>
     </div>
